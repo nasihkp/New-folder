@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Green Thumb Garden Store</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-inter">
 
-    <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg fixed w-full z-10">
         <div class="container mx-auto px-4 py-4 md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
@@ -25,19 +21,16 @@
                 </button>
             </div>
 
-            <!-- Nav Links -->
             <div id="nav-links" class="hidden md:flex flex-col md:flex-row md:items-center mt-4 md:mt-0">
                 <a href="#home" class="nav-link active py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Home</a>
                 <a href="#about" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">About</a>
                 <a href="#products" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Products</a>
-                <a href="#gallery" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Gallery</a>
                 <a href="#contact" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Contact Us</a>
             </div>
         </div>
     </nav>
 
     <main class="pt-20">
-        <!-- Home Section -->
         <section id="home-section" class="content-section active hero-bg text-white flex items-center justify-center text-center p-8 min-h-screen">
             <div class="bg-black bg-opacity-40 p-8 rounded-lg max-w-2xl">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Cultivate Your Sanctuary</h1>
@@ -46,7 +39,6 @@
             </div>
         </section>
 
-        <!-- About Us Section -->
         <section id="about-section" class="content-section p-8 min-h-screen flex items-center justify-center bg-green-50">
             <div class="container mx-auto max-w-4xl text-center">
                 <h2 class="text-4xl font-bold text-green-800 mb-6">Our Story</h2>
@@ -59,47 +51,23 @@
             </div>
         </section>
 
-        <!-- Products Section -->
         <section id="products-section" class="content-section p-8 bg-gray-100">
             <div class="container mx-auto">
                 <h2 class="text-4xl font-bold text-green-800 text-center mb-12">Our Products</h2>
 
-                <!-- Plants Section -->
-                <h3 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-300 pb-2">Plants</h3>
+                <h3 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-300 pb-2">Plants 🌿</h3>
                 <div id="plants-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Dynamic plant cards will be inserted here by JavaScript -->
-                </div>
+                    </div>
 
-                <!-- Seeds Section -->
-                <h3 class="text-3xl font-bold text-green-700 mt-12 mb-6 border-b-2 border-green-300 pb-2">Seeds</h3>
+                <h3 class="text-3xl font-bold text-green-700 mt-12 mb-6 border-b-2 border-green-300 pb-2">Seeds 🌱</h3>
                 <div id="seeds-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Dynamic seed cards will be inserted here by JavaScript -->
-                </div>
+                    </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery-section" class="content-section p-8 bg-green-50">
-            <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-green-800 text-center mb-12">Gallery</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <!-- Example gallery images -->
-                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+1" alt="Garden flowers" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+2" alt="Vegetable garden" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+3" alt="Potted plants" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+4" alt="Gardening tools" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+5" alt="A variety of seeds" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+6" alt="Fresh herbs" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+7" alt="Lush foliage" class="w-full h-full object-cover rounded-lg shadow-md">
-                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+8" alt="Watering a plant" class="w-full h-full object-cover rounded-lg shadow-md">
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Us Section -->
         <section id="contact-section" class="content-section p-8 min-h-screen flex items-center justify-center bg-gray-100">
             <div class="container mx-auto max-w-xl bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-4xl font-bold text-green-800 text-center mb-6">Contact Us</h2>
+                <h2 class="text-4xl font-bold text-green-800 text-center mb-6">Contact Us 📞</h2>
                 <form class="space-y-6">
                     <div>
                         <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
@@ -119,17 +87,15 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-green-800 text-white p-8 text-center">
         <div class="container mx-auto">
             <p>&copy; 2024 The Green Thumb Garden Store. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Product Details Modal -->
-    <div id="product-modal" class="modal fixed inset-0 flex items-center justify-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-xl max-w-xl mx-4 relative">
-            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">&times;</button>
+    <div id="product-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden transition-opacity duration-300 ease-in-out opacity-0">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-xl w-full relative transform scale-95 opacity-0 transition-all duration-300 ease-in-out">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl font-bold">&times;</button>
             <img id="modal-image" src="" alt="Product" class="w-full h-64 object-cover rounded-lg mb-4">
             <h3 id="modal-name" class="text-2xl font-bold text-green-800 mb-2"></h3>
             <p id="modal-price" class="text-xl font-medium text-gray-700 mb-2"></p>
@@ -139,7 +105,6 @@
         </div>
     </div>
 
-    <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>

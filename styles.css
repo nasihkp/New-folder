@@ -1,0 +1,100 @@
+/* Custom Styles for The Green Thumb Garden Store */
+
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling for navigation */
+}
+
+/* Hero Section Background */
+.hero-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x1080/4F6F52/ffffff?text=Garden+Hero') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+/* Navigation Link Active State */
+.nav-link.active {
+    color: #166534; /* Darker green for active link */
+    font-weight: 700; /* Bold active link */
+    border-bottom: 2px solid #166534; /* Underline active link */
+}
+
+/* Content Sections for SPA-like behavior */
+.content-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content-section.active {
+    display: flex; /* or block, depending on layout */
+    opacity: 1;
+}
+
+/* Modal Styling */
+.modal {
+    background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+    z-index: 1000;
+}
+
+.modal > div { /* Inner modal content */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Enhancements for product cards */
+.product-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile menu specific styling */
+#nav-links.flex {
+    display: flex;
+    position: absolute;
+    top: 64px; /* Adjust based on your nav height */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    padding-bottom: 1rem;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+#nav-links.flex a {
+    text-align: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+#nav-links.flex a:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Small adjustments for responsiveness */
+@media (min-width: 768px) {
+    #nav-links.flex {
+        position: static;
+        box-shadow: none;
+        flex-direction: row;
+        padding-bottom: 0;
+        animation: none;
+    }
+}

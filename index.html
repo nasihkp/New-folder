@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Green Thumb Garden Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">The Green Thumb</div>
+        <nav>
+            <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li>
+                    <a href="#" id="cart-link">
+                        <i class="fas fa-shopping-cart cart-icon"></i>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <h1>Welcome to Our Garden Store</h1>
+            <p>Your one-stop shop for beautiful plants, quality seeds, and all your gardening needs. Start growing today!</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <h2>Our Products</h2>
+            <div class="products-grid" id="products-container">
+                <!-- Product cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2>About Us</h2>
+            <p>
+                At The Green Thumb, we believe that gardening is more than just a hobby—it's a way of life.
+                We started our journey with a simple passion for growing and nurturing plants. Our mission
+                is to share that passion with you by providing the highest quality plants, seeds, and
+                gardening tools. We source our products responsibly and are dedicated to helping you create
+                your own little paradise, one plant at a time.
+            </p>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>Have a question or need assistance? Don't hesitate to reach out! We're here to help you with your gardening journey.</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:info@greenthumb.com">info@greenthumb.com</a></p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Address: 123 Garden Lane, Green Valley, GV 12345</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-cart">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items-container">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div id="cart-total" class="cart-total"></div>
+            <button class="primary-button" id="order-button">Order Now</button>
+        </div>
+    </div>
+    
+    <!-- User Details Modal -->
+    <div id="user-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-details-modal">&times;</span>
+            <h2>Enter Your Details</h2>
+            <form id="order-form" class="order-form">
+                <input type="text" id="user-name" placeholder="Full Name" required>
+                <input type="email" id="user-email" placeholder="Email Address" required>
+                <input type="text" id="user-address" placeholder="Shipping Address" required>
+                <button type="submit" class="primary-button">Complete Order</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 The Green Thumb. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

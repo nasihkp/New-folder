@@ -10,30 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(productData => {
             const plantsContainer = document.getElementById('plants-container');
             const seedsContainer = document.getElementById('seeds-container');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinksDesktop = document.querySelectorAll('.nav-link');
+            const navLinksMobile = document.querySelectorAll('#nav-links-mobile .nav-link');
             const contentSections = document.querySelectorAll('.content-section');
             const modal = document.getElementById('product-modal');
-            const modalContent = modal.querySelector('div'); // Get the inner content of the modal
+            const modalContent = modal.querySelector('div');
             const closeModalBtn = document.getElementById('close-modal-btn');
             const menuBtn = document.getElementById('menu-btn');
-            const navLinksContainer = document.getElementById('nav-links');
+            const navLinksMobileContainer = document.getElementById('nav-links-mobile');
 
             // Function to render product cards
             const renderProducts = (products, container) => {
                 container.innerHTML = '';
                 products.forEach(product => {
                     const card = document.createElement('div');
-                    card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer overflow-hidden transform hover:scale-105'; // Added transform for hover effect
+                    card.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer transform hover:scale-105';
                     card.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
-                            <h4 class="text-xl font-bold text-green-800 mb-2">${product.name}</h4>
-                            <p class="text-lg text-gray-700 font-medium mb-3">${product.price}</p>
-                            <p class="text-sm text-gray-500 mb-4">${product.description.substring(0, 100)}...</p>
-                            <button class="buy-button mt-auto w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 transform hover:scale-105">View Details</button>
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="p-5 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-xl font-bold text-green-800 mb-1">${product.name}</h4>
+                                <p class="text-lg text-gray-700 font-medium mb-3">${product.price}</p>
+                                <p class="text-sm text-gray-500 mb-4">${product.description.substring(0, 100)}...</p>
+                            </div>
+                            <button class="buy-button mt-auto w-full bg-green-500 text-white py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300 transform hover:scale-105">View Details</button>
                         </div>
                     `;
-                    // Use a more specific class for the button to attach the event listener
                     card.querySelector('.buy-button').addEventListener('click', () => showProductDetails(product));
                     container.appendChild(card);
                 });
@@ -46,11 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('modal-price').textContent = product.price;
                 document.getElementById('modal-description').textContent = product.description;
                 document.getElementById('modal-care').textContent = `Care Instructions: ${product.care}`;
+                
                 modal.classList.remove('hidden');
                 setTimeout(() => {
                     modal.classList.add('opacity-100');
                     modalContent.classList.add('scale-100', 'opacity-100');
-                }, 10); // Small delay for transition to work
+                }, 10);
             };
 
             // Function to close the modal
@@ -59,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalContent.classList.remove('scale-100', 'opacity-100');
                 setTimeout(() => {
                     modal.classList.add('hidden');
-                }, 300); // Wait for transition to finish
+                }, 300);
             };
 
             closeModalBtn.addEventListener('click', closeModal);
@@ -76,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 document.getElementById(sectionId).classList.add('active');
 
-                // Update active link styling
-                navLinks.forEach(link => {
+                // Update active link styling for both desktop and mobile
+                [...navLinksDesktop, ...navLinksMobile].forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href').substring(1) + '-section' === sectionId) {
                         link.classList.add('active');
@@ -85,14 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // Hide mobile menu after click
-                if (navLinksContainer.classList.contains('flex')) {
-                    navLinksContainer.classList.add('hidden');
-                    navLinksContainer.classList.remove('flex');
+                if (!navLinksMobileContainer.classList.contains('hidden')) {
+                    navLinksMobileContainer.classList.add('hidden');
                 }
             };
-
-            // Add event listeners for navigation links
-            navLinks.forEach(link => {
+            
+            // Add event listeners for all navigation links
+            [...navLinksDesktop, ...navLinksMobile].forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const sectionId = link.getAttribute('href').substring(1) + '-section';
@@ -102,8 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Mobile menu toggle
             menuBtn.addEventListener('click', () => {
-                navLinksContainer.classList.toggle('hidden');
-                navLinksContainer.classList.toggle('flex');
+                navLinksMobileContainer.classList.toggle('hidden');
             });
 
             // Set initial active section (e.g., home)
@@ -115,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error loading product data:', error);
-            // You can add a user-facing error message here if needed
             const productsSection = document.getElementById('products-section');
             productsSection.innerHTML = '<p class="text-center text-red-500 text-lg">Failed to load products. Please try again later.</p>';
         });

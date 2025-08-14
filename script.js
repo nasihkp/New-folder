@@ -1,122 +1,108 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch product data from the external JSON file
-    fetch('products.json')
-        .then(response => {
+    // Select the mobile menu button and the mobile menu container
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Add a click event listener to the mobile menu button
+    mobileMenuBtn.addEventListener('click', () => {
+        // Toggle the 'hidden' class on the mobile menu to show/hide it
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Handle smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Get the target element to scroll to
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // If the element exists, scroll to it smoothly
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+
+            // Hide the mobile menu after clicking a link
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+
+    // Dynamic Product Loading Functionality
+    const productContainer = document.getElementById('product-container');
+    const buyModal = document.getElementById('buy-modal');
+    const modalProductName = document.getElementById('modal-product-name');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    // Function to fetch products from the JSON file
+    async function fetchProducts() {
+        try {
+            const response = await fetch('products.json'); // Fetch the JSON file
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();
-        })
-        .then(productData => {
-            const plantsContainer = document.getElementById('plants-container');
-            const seedsContainer = document.getElementById('seeds-container');
-            const navLinksDesktop = document.querySelectorAll('.nav-link');
-            const navLinksMobile = document.querySelectorAll('#nav-links-mobile .nav-link');
-            const contentSections = document.querySelectorAll('.content-section');
-            const modal = document.getElementById('product-modal');
-            const modalContent = modal.querySelector('div');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-            const menuBtn = document.getElementById('menu-btn');
-            const navLinksMobileContainer = document.getElementById('nav-links-mobile');
+            const products = await response.json(); // Parse the JSON data
+            renderProducts(products); // Render the products
+        } catch (error) {
+            console.error('There was a problem fetching the products:', error);
+            productContainer.innerHTML = '<p class="text-center text-red-500">Failed to load products. Please try again later.</p>';
+        }
+    }
 
-            // Function to render product cards
-            const renderProducts = (products, container) => {
-                container.innerHTML = '';
-                products.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer transform hover:scale-105';
-                    card.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
-                        <div class="p-5 flex flex-col justify-between">
-                            <div>
-                                <h4 class="text-xl font-bold text-green-800 mb-1">${product.name}</h4>
-                                <p class="text-lg text-gray-700 font-medium mb-3">${product.price}</p>
-                                <p class="text-sm text-gray-500 mb-4">${product.description.substring(0, 100)}...</p>
-                            </div>
-                            <button class="buy-button mt-auto w-full bg-green-500 text-white py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300 transform hover:scale-105">View Details</button>
-                        </div>
-                    `;
-                    card.querySelector('.buy-button').addEventListener('click', () => showProductDetails(product));
-                    container.appendChild(card);
-                });
-            };
+    // Function to render the product cards on the page
+    function renderProducts(products) {
+        products.forEach(product => {
+            // Create the main product card element
+            const card = document.createElement('div');
+            card.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105';
 
-            // Function to show the product details modal
-            const showProductDetails = (product) => {
-                document.getElementById('modal-image').src = product.image;
-                document.getElementById('modal-name').textContent = product.name;
-                document.getElementById('modal-price').textContent = product.price;
-                document.getElementById('modal-description').textContent = product.description;
-                document.getElementById('modal-care').textContent = `Care Instructions: ${product.care}`;
-                
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.add('opacity-100');
-                    modalContent.classList.add('scale-100', 'opacity-100');
-                }, 10);
-            };
-
-            // Function to close the modal
-            const closeModal = () => {
-                modal.classList.remove('opacity-100');
-                modalContent.classList.remove('scale-100', 'opacity-100');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            };
-
-            closeModalBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Function to handle navigation
-            const navigateToSection = (sectionId) => {
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(sectionId).classList.add('active');
-
-                // Update active link styling for both desktop and mobile
-                [...navLinksDesktop, ...navLinksMobile].forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) + '-section' === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // Hide mobile menu after click
-                if (!navLinksMobileContainer.classList.contains('hidden')) {
-                    navLinksMobileContainer.classList.add('hidden');
-                }
-            };
-            
-            // Add event listeners for all navigation links
-            [...navLinksDesktop, ...navLinksMobile].forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const sectionId = link.getAttribute('href').substring(1) + '-section';
-                    navigateToSection(sectionId);
-                });
-            });
-
-            // Mobile menu toggle
-            menuBtn.addEventListener('click', () => {
-                navLinksMobileContainer.classList.toggle('hidden');
-            });
-
-            // Set initial active section (e.g., home)
-            navigateToSection('home-section');
-
-            // Initial rendering of products
-            renderProducts(productData.plants, plantsContainer);
-            renderProducts(productData.seeds, seedsContainer);
-        })
-        .catch(error => {
-            console.error('Error loading product data:', error);
-            const productsSection = document.getElementById('products-section');
-            productsSection.innerHTML = '<p class="text-center text-red-500 text-lg">Failed to load products. Please try again later.</p>';
+            // Populate the card with dynamic content using a template literal
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">${product.name}</h3>
+                    <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-green-700">$${product.price.toFixed(2)}</span>
+                        <button class="buy-btn bg-green-600 text-white py-2 px-6 rounded-full text-lg font-bold hover:bg-green-700 transition duration-300 transform hover:scale-105" data-product-name="${product.name}">Buy Now</button>
+                    </div>
+                </div>
+            `;
+            // Append the new card to the product container
+            productContainer.appendChild(card);
         });
+
+        // Attach event listeners to the "Buy Now" buttons after they are created
+        document.querySelectorAll('.buy-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productName = event.target.getAttribute('data-product-name');
+                showBuyConfirmation(productName);
+            });
+        });
+    }
+
+    // Function to show the modal confirmation
+    function showBuyConfirmation(productName) {
+      modalProductName.textContent = productName;
+      buyModal.classList.remove('hidden');
+    }
+
+    // Close modal when the button is clicked
+    closeModalBtn.addEventListener('click', () => {
+      buyModal.classList.add('hidden');
+    });
+
+    // Close modal when clicking outside of it
+    buyModal.addEventListener('click', (event) => {
+      if (event.target === buyModal) {
+        buyModal.classList.add('hidden');
+      }
+    });
+
+    // Call the function to fetch and render products when the page loads
+    fetchProducts();
 });

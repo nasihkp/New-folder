@@ -1,54 +1,44 @@
-{
-    "plants": [
-        {
-            "id": 1,
-            "name": "Monstera Deliciosa",
-            "price": "₹999",
-            "description": "A popular tropical houseplant with unique split leaves. Thrives in bright, indirect light.",
-            "image": "https://placehold.co/600x400/4F6F52/ffffff?text=Monstera",
-            "care": "Water when top 2 inches of soil are dry. Mist frequently."
-        },
-        {
-            "id": 2,
-            "name": "Snake Plant",
-            "price": "₹599",
-            "description": "Extremely resilient and low-maintenance, perfect for beginners. Purifies the air effectively.",
-            "image": "https://placehold.co/600x400/86A789/ffffff?text=Snake+Plant",
-            "care": "Water sparingly, about once every 2-4 weeks. Tolerates low light."
-        },
-        {
-            "id": 3,
-            "name": "Fiddle Leaf Fig",
-            "price": "₹1499",
-            "description": "A stylish and striking plant known for its large, violin-shaped leaves.",
-            "image": "https://placehold.co/600x400/4F6F52/ffffff?text=Fiddle+Leaf",
-            "care": "Prefers bright, filtered light. Water when the top inch of soil is dry."
-        }
-    ],
-    "seeds": [
-        {
-            "id": 4,
-            "name": "Sunflower Seeds",
-            "price": "₹120",
-            "description": "Packet of vibrant sunflower seeds that grow into tall, beautiful flowers.",
-            "image": "https://placehold.co/600x400/86A789/ffffff?text=Sunflower+Seeds",
-            "care": "Sow in full sun after the last frost. Water regularly."
-        },
-        {
-            "id": 5,
-            "name": "Tomato Seeds",
-            "price": "₹80",
-            "description": "High-yield heirloom tomato seeds for a bountiful harvest. Sweet and juicy.",
-            "image": "https://placehold.co/600x400/4F6F52/ffffff?text=Tomato+Seeds",
-            "care": "Start indoors 6-8 weeks before the last frost. Needs full sun."
-        },
-        {
-            "id": 6,
-            "name": "Basil Seeds",
-            "price": "₹50",
-            "description": "Sweet basil seeds perfect for culinary use. Grows well in pots or gardens.",
-            "image": "https://placehold.co/600x400/86A789/ffffff?text=Basil+Seeds",
-            "care": "Sow in a sunny location. Keep soil consistently moist."
-        }
-    ]
-}
+[
+    {
+      "id": 1,
+      "name": "Sunflower Seeds",
+      "image": "https://placehold.co/400x300/e9d5a1/4f6f52?text=Sunflower+Seeds",
+      "description": "Grow your own beautiful, bright sunflowers with these high-quality seeds. Perfect for adding a splash of color to your garden.",
+      "price": 3.99
+    },
+    {
+      "id": 2,
+      "name": "Basil Plant",
+      "image": "https://placehold.co/400x300/98c19a/4f6f52?text=Basil+Plant",
+      "description": "A fragrant and fresh basil plant. Ideal for kitchen gardens and adding a delicious touch to your culinary creations.",
+      "price": 6.50
+    },
+    {
+      "id": 3,
+      "name": "Succulent Assortment",
+      "image": "https://placehold.co/400x300/a391a3/4f6f52?text=Succulent+Mix",
+      "description": "A lovely assortment of easy-to-care-for succulents. They thrive indoors and require minimal watering.",
+      "price": 19.99
+    },
+    {
+      "id": 4,
+      "name": "Gardening Trowel",
+      "image": "https://placehold.co/400x300/c0b283/4f6f52?text=Gardening+Tool",
+      "description": "An ergonomic and durable gardening trowel, essential for planting and weeding in your garden.",
+      "price": 12.00
+    },
+    {
+      "id": 5,
+      "name": "Tomato Seeds",
+      "image": "https://placehold.co/400x300/e96e50/ffffff?text=Tomato+Seeds",
+      "description": "Grow juicy and flavorful tomatoes right in your backyard. These seeds are perfect for both beginners and experienced gardeners.",
+      "price": 4.50
+    },
+    {
+      "id": 6,
+      "name": "Rose Bush",
+      "image": "https://placehold.co/400x300/ffb6c1/ffffff?text=Rose+Bush",
+      "description": "A classic red rose bush that will bring elegance and a beautiful fragrance to any garden space.",
+      "price": 24.99
+    }
+]

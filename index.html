@@ -4,104 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Green Thumb Garden Store</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for cart icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-gray-50">
 
-    <header>
-        <div class="logo">The Green Thumb</div>
-        <nav>
-            <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li>
-                    <a href="#" id="cart-link">
-                        <i class="fas fa-shopping-cart cart-icon"></i>
-                        <span id="cart-count" class="cart-count">0</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto px-4 py-4 md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-green-800">The Green Thumb</a>
+                <button id="menu-btn" class="md:hidden text-gray-500 hover:text-green-800 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
 
-    <main>
+            <!-- Nav Links -->
+            <div id="nav-links" class="hidden md:flex flex-col md:flex-row md:items-center mt-4 md:mt-0">
+                <a href="#home" class="nav-link active py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                <a href="#about" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">About</a>
+                <a href="#products" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Products</a>
+                <a href="#gallery" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Gallery</a>
+                <a href="#contact" class="nav-link py-2 md:px-4 text-gray-600 hover:text-green-700 transition duration-300">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
         <!-- Home Section -->
-        <section id="home" class="section">
-            <h1>Welcome to Our Garden Store</h1>
-            <p>Your one-stop shop for beautiful plants, quality seeds, and all your gardening needs. Start growing today!</p>
-            <a href="#products" class="cta-button">Shop Now</a>
-        </section>
-
-        <!-- Products Section -->
-        <section id="products" class="section">
-            <h2>Our Products</h2>
-            <div class="products-grid" id="products-container">
-                <!-- Product cards will be dynamically inserted here by JavaScript -->
+        <section id="home-section" class="content-section active hero-bg text-white flex items-center justify-center text-center p-8 min-h-screen">
+            <div class="bg-black bg-opacity-40 p-8 rounded-lg max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Cultivate Your Sanctuary</h1>
+                <p class="text-lg md:text-xl mb-8">We offer the finest plants, seeds, and tools to help your garden thrive.</p>
+                <a href="#products" class="bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-300">Shop Now</a>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <h2>About Us</h2>
-            <p>
-                At The Green Thumb, we believe that gardening is more than just a hobby—it's a way of life.
-                We started our journey with a simple passion for growing and nurturing plants. Our mission
-                is to share that passion with you by providing the highest quality plants, seeds, and
-                gardening tools. We source our products responsibly and are dedicated to helping you create
-                your own little paradise, one plant at a time.
-            </p>
+        <!-- About Us Section -->
+        <section id="about-section" class="content-section p-8 min-h-screen flex items-center justify-center bg-green-50">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-4xl font-bold text-green-800 mb-6">Our Story</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    Founded in 2020 by a team of passionate gardeners, The Green Thumb Garden Store was born from a simple idea: to make high-quality gardening accessible to everyone. We believe that a garden is more than just a plot of land; it's a place of peace, creativity, and connection with nature.
+                </p>
+                <p class="text-lg text-gray-700">
+                    Our mission is to provide you with the best plants, carefully selected seeds, and eco-friendly tools to help you create and maintain the garden of your dreams. From beginners to seasoned experts, we are here to support your journey every step of the way.
+                </p>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products-section" class="content-section p-8 bg-gray-100">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-green-800 text-center mb-12">Our Products</h2>
+
+                <!-- Plants Section -->
+                <h3 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-300 pb-2">Plants</h3>
+                <div id="plants-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic plant cards will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Seeds Section -->
+                <h3 class="text-3xl font-bold text-green-700 mt-12 mb-6 border-b-2 border-green-300 pb-2">Seeds</h3>
+                <div id="seeds-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic seed cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery-section" class="content-section p-8 bg-green-50">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-green-800 text-center mb-12">Gallery</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Example gallery images -->
+                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+1" alt="Garden flowers" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+2" alt="Vegetable garden" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+3" alt="Potted plants" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+4" alt="Gardening tools" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+5" alt="A variety of seeds" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+6" alt="Fresh herbs" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/4F6F52/ffffff?text=Gallery+Image+7" alt="Lush foliage" class="w-full h-full object-cover rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x400/86A789/ffffff?text=Gallery+Image+8" alt="Watering a plant" class="w-full h-full object-cover rounded-lg shadow-md">
+                </div>
+            </div>
         </section>
 
         <!-- Contact Us Section -->
-        <section id="contact" class="section">
-            <h2>Contact Us</h2>
-            <p>Have a question or need assistance? Don't hesitate to reach out! We're here to help you with your gardening journey.</p>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:info@greenthumb.com">info@greenthumb.com</a></p>
-                <p>Phone: (123) 456-7890</p>
-                <p>Address: 123 Garden Lane, Green Valley, GV 12345</p>
+        <section id="contact-section" class="content-section p-8 min-h-screen flex items-center justify-center bg-gray-100">
+            <div class="container mx-auto max-w-xl bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-4xl font-bold text-green-800 text-center mb-6">Contact Us</h2>
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Your Email">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition duration-300">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
 
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" id="close-cart">&times;</span>
-            <h2>Your Cart</h2>
-            <div id="cart-items-container">
-                <!-- Cart items will be dynamically inserted here -->
-            </div>
-            <div id="cart-total" class="cart-total"></div>
-            <button class="primary-button" id="order-button">Order Now</button>
+    <!-- Footer -->
+    <footer class="bg-green-800 text-white p-8 text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2024 The Green Thumb Garden Store. All rights reserved.</p>
         </div>
-    </div>
-    
-    <!-- User Details Modal -->
-    <div id="user-details-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" id="close-details-modal">&times;</span>
-            <h2>Enter Your Details</h2>
-            <form id="order-form" class="order-form">
-                <input type="text" id="user-name" placeholder="Full Name" required>
-                <input type="email" id="user-email" placeholder="Email Address" required>
-                <input type="text" id="user-address" placeholder="Shipping Address" required>
-                <button type="submit" class="primary-button">Complete Order</button>
-            </form>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 The Green Thumb. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="modal fixed inset-0 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-xl mx-4 relative">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">&times;</button>
+            <img id="modal-image" src="" alt="Product" class="w-full h-64 object-cover rounded-lg mb-4">
+            <h3 id="modal-name" class="text-2xl font-bold text-green-800 mb-2"></h3>
+            <p id="modal-price" class="text-xl font-medium text-gray-700 mb-2"></p>
+            <p id="modal-description" class="text-gray-600 mb-4"></p>
+            <p id="modal-care" class="text-sm text-gray-500 italic mb-4"></p>
+            <button class="bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300 w-full">Add to Cart</button>
+        </div>
+    </div>
 
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,54 @@
+{
+    "plants": [
+        {
+            "id": 1,
+            "name": "Monstera Deliciosa",
+            "price": "₹999",
+            "description": "A popular tropical houseplant with unique split leaves. Thrives in bright, indirect light.",
+            "image": "https://placehold.co/600x400/4F6F52/ffffff?text=Monstera",
+            "care": "Water when top 2 inches of soil are dry. Mist frequently."
+        },
+        {
+            "id": 2,
+            "name": "Snake Plant",
+            "price": "₹599",
+            "description": "Extremely resilient and low-maintenance, perfect for beginners. Purifies the air effectively.",
+            "image": "https://placehold.co/600x400/86A789/ffffff?text=Snake+Plant",
+            "care": "Water sparingly, about once every 2-4 weeks. Tolerates low light."
+        },
+        {
+            "id": 3,
+            "name": "Fiddle Leaf Fig",
+            "price": "₹1499",
+            "description": "A stylish and striking plant known for its large, violin-shaped leaves.",
+            "image": "https://placehold.co/600x400/4F6F52/ffffff?text=Fiddle+Leaf",
+            "care": "Prefers bright, filtered light. Water when the top inch of soil is dry."
+        }
+    ],
+    "seeds": [
+        {
+            "id": 4,
+            "name": "Sunflower Seeds",
+            "price": "₹120",
+            "description": "Packet of vibrant sunflower seeds that grow into tall, beautiful flowers.",
+            "image": "https://placehold.co/600x400/86A789/ffffff?text=Sunflower+Seeds",
+            "care": "Sow in full sun after the last frost. Water regularly."
+        },
+        {
+            "id": 5,
+            "name": "Tomato Seeds",
+            "price": "₹80",
+            "description": "High-yield heirloom tomato seeds for a bountiful harvest. Sweet and juicy.",
+            "image": "https://placehold.co/600x400/4F6F52/ffffff?text=Tomato+Seeds",
+            "care": "Start indoors 6-8 weeks before the last frost. Needs full sun."
+        },
+        {
+            "id": 6,
+            "name": "Basil Seeds",
+            "price": "₹50",
+            "description": "Sweet basil seeds perfect for culinary use. Grows well in pots or gardens.",
+            "image": "https://placehold.co/600x400/86A789/ffffff?text=Basil+Seeds",
+            "care": "Sow in a sunny location. Keep soil consistently moist."
+        }
+    ]
+}
